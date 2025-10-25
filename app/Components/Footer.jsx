@@ -10,25 +10,25 @@ export default function Footer() {
           {/* Brand Section */}
           <div className="space-y-4">
             <div className="flex items-center space-x-2">
-              <div className="w-10 h-10 bg-gradient-to-br from-blue-500 to-blue-700 rounded-lg flex items-center justify-center">
-                <span className="text-white text-xl font-bold">Q</span>
-              </div>
+              <div className="flex items-center justify-center">
+              <span ><img className='h-10 w-10 rounded-full' src="/logo.png" alt="logo" /></span>
+            </div>
               <span className="text-2xl font-bold text-gray-900">LuxStay</span>
             </div>
             <p className="text-gray-600 text-sm leading-relaxed">
               Discover the world's most extraordinary places to stay, from boutique hotels to luxury villas and private islands.
             </p>
             <div className="flex space-x-4">
-              <a href="#" className="w-9 h-9 rounded-full bg-gray-200 flex items-center justify-center hover:bg-blue-600 hover:text-white transition-all">
+              <a href="#" className="w-9 h-9 rounded-full bg-gray-900 flex items-center justify-center hover:bg-blue-600 hover:text-white transition-all">
                 <Instagram className="w-4 h-4" />
               </a>
-              <a href="#" className="w-9 h-9 rounded-full bg-gray-200 flex items-center justify-center hover:bg-blue-600 hover:text-white transition-all">
+              <a href="#" className="w-9 h-9 rounded-full bg-gray-900 flex items-center justify-center hover:bg-blue-600 hover:text-white transition-all">
                 <Facebook className="w-4 h-4" />
               </a>
-              <a href="#" className="w-9 h-9 rounded-full bg-gray-200 flex items-center justify-center hover:bg-blue-600 hover:text-white transition-all">
+              <a href="#" className="w-9 h-9 rounded-full bg-gray-900 flex items-center justify-center hover:bg-blue-600 hover:text-white transition-all">
                 <Twitter className="w-4 h-4" />
               </a>
-              <a href="#" className="w-9 h-9 rounded-full bg-gray-200 flex items-center justify-center hover:bg-blue-600 hover:text-white transition-all">
+              <a href="#" className="w-9 h-9 rounded-full bg-gray-900 flex items-center justify-center hover:bg-blue-600 hover:text-white transition-all">
                 <Linkedin className="w-4 h-4" />
               </a>
             </div>
@@ -78,7 +78,7 @@ export default function Footer() {
         </div>
 
         {/* Bottom Bar */}
-        <div className="pt-8 border-t border-gray-200">
+        <div className="pt-8 border-t border-gray-900">
           <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
             <p className="text-gray-600 text-sm">
               © 2025 LuxStay. All rights reserved.

@@ -80,24 +80,24 @@ export default function HotelHomepage() {
             <div className="bg-white rounded-2xl shadow-2xl p-4 md:p-6 max-w-4xl mx-auto">
               <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
                 <div className="relative">
-                  <MapPin className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" />
+                  <MapPin className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-black" />
                   <input
                     type="text"
                     placeholder="Hotel location"
                     value={location}
                     onChange={(e) => setLocation(e.target.value)}
-                    className="w-full pl-11 pr-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-500"
+                    className="w-full pl-11 pr-4 py-3 border border-black rounded-lg focus:outline-none focus:border-blue-500"
                   />
                 </div>
 
                 <div className="relative">
-                  <Calendar className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" />
+                  <Calendar className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-black" />
                   <input
                     type="text"
                     placeholder="25 June - 5 July"
                     value={checkIn}
                     onChange={(e) => setCheckIn(e.target.value)}
-                    className="w-full pl-11 pr-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-500"
+                    className="w-full pl-11 pr-4 py-3 border border-black rounded-lg focus:outline-none focus:border-blue-500"
                   />
                 </div>
 
@@ -163,7 +163,7 @@ export default function HotelHomepage() {
                   </div>
 
                   <div className="flex items-start space-x-2 mb-4">
-                    <MapPin className="w-4 h-4 text-gray-400 mt-1 flex-shrink-0" />
+                    <MapPin className="w-4 h-4 text-black mt-1 flex-shrink-0" />
                     <p className="text-sm text-gray-600">{hotel.location}</p>
                   </div>
 
@@ -221,7 +221,7 @@ export default function HotelHomepage() {
                   </div>
 
                   <div className="flex items-start space-x-2 mb-4">
-                    <MapPin className="w-4 h-4 text-gray-400 mt-1 flex-shrink-0" />
+                    <MapPin className="w-4 h-4 text-black mt-1 flex-shrink-0" />
                     <p className="text-sm text-gray-600">{hotel.location}</p>
                   </div>
 
@@ -248,7 +248,7 @@ export default function HotelHomepage() {
             <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
               Stay Inspired
             </h2>
-            <p className="text-lg text-gray-300 mb-8 max-w-2xl mx-auto">
+            <p className="text-lg text-black mb-8 max-w-2xl mx-auto">
               Join our newsletter and be the first to discover new destinations, exclusive offers, and travel inspiration.
             </p>
 
@@ -264,7 +264,7 @@ export default function HotelHomepage() {
               </button>
             </div>
 
-            <p className="text-sm text-gray-400 mt-6">
+            <p className="text-sm text-black mt-6">
               By subscribing, you agree to our Privacy Policy and consent to receive updates.
             </p>
           </div>

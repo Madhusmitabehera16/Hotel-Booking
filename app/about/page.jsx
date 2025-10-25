@@ -8,7 +8,7 @@ export default function AboutPage() {
     <div className="min-h-screen bg-white">
       
 
-      {/* Section 1: Hero - Welcome to The Grand */}
+      {/* Section 1: Hero - Welcome to LuxStay */}
       <section className="relative h-screen ">
         <div 
           className="absolute inset-0 bg-cover bg-center"
@@ -25,12 +25,12 @@ export default function AboutPage() {
               WELCOME TO
             </p>
             <h1 className="text-6xl md:text-8xl lg:text-9xl font-bold text-white mb-8 italic" style={{ fontFamily: 'Brush Script MT, cursive' }}>
-              The Grand
+              LuxStay
             </h1>
             <p className="text-2xl md:text-3xl text-white uppercase tracking-wider mb-12">
-              RESORT & SPA HOTEL
+              Experience the art of luxury living
             </p>
-            <button className="bg-white text-gray-900 px-8 py-4 text-sm uppercase tracking-wider font-semibold hover:bg-gray-100 transition-colors">
+            <button className="bg-white text-gray-900 rounded-full border border-black px-8 py-4 text-sm uppercase tracking-wider font-semibold hover:bg-gray-100 transition-colors">
               LEARN MORE
             </button>
           </div>
@@ -111,7 +111,7 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* Section 5: The Grand Branding */}
+      {/* Section 5: LuxStay Branding */}
       <section className="relative py-32 px-4">
         <div 
           className="absolute inset-0 bg-cover bg-center"
@@ -124,10 +124,10 @@ export default function AboutPage() {
 
         <div className="relative text-center">
           <h2 className="text-6xl md:text-7xl font-bold text-white mb-4 italic" style={{ fontFamily: 'Brush Script MT, cursive' }}>
-            The Grand
+            LuxStay
           </h2>
           <p className="text-xl md:text-2xl text-white uppercase tracking-widest">
-            RESORT & SPA HOTEL
+            Experience the art of luxury living
           </p>
         </div>
       </section>
