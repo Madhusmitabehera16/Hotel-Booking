@@ -126,9 +126,9 @@ const HotelsPage = ({ hotels, onHotelClick }) => {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-gray-50 ">
       <div className="bg-white shadow-sm">
-        <div className="max-w-7xl mx-auto px-4 py-6">
+        <div className="max-w-7xl mx-auto px-4 py-15">
           <h1 className="text-4xl font-bold text-gray-900 mb-2">Find Your Next Stay</h1>
           <p className="text-gray-600 mb-6">
             Search hundreds of luxury and budget hotels in your desired location.

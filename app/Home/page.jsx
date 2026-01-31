@@ -79,7 +79,7 @@ export default function HotelHomepage() {
             <div className="bg-white rounded-2xl shadow-2xl p-4 md:p-6 max-w-4xl mx-auto">
               <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
                 <div className="relative">
-                  <MapPin className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" />
+                  <MapPin className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-700" />
                   <input
                     type="text"
                     placeholder="Hotel location"
@@ -90,7 +90,7 @@ export default function HotelHomepage() {
                 </div>
 
                 <div className="relative">
-                  <Calendar className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" />
+                  <Calendar className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-700" />
                   <input
                     type="text"
                     placeholder="25 June - 5 July"
@@ -101,7 +101,7 @@ export default function HotelHomepage() {
                 </div>
 
                 <div className="relative">
-                  <Users className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" />
+                  <Users className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-700" />
                   <select
                     value={guests}
                     onChange={(e) => setGuests(e.target.value)}
@@ -284,9 +284,11 @@ export default function HotelHomepage() {
               <p className="text-lg text-gray-600 mb-8 leading-relaxed">
                 From boutique hideaways to luxury resorts, we partner with the world's finest properties to bring you exceptional experiences at every price point.
               </p>
-              <button className="bg-blue-500 hover:bg-blue-600 text-white font-semibold px-8 py-4 rounded-lg transition-colors">
-                Learn More About Us
-              </button>
+              <Link href="/about">
+                <button className="bg-blue-500 hover:bg-blue-600 text-white font-semibold px-8 py-4 rounded-lg transition-colors">
+                  Learn More About Us
+                </button>
+              </Link>
             </div>
 
             <div className="grid grid-cols-2 gap-4">

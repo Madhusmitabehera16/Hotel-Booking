@@ -4,6 +4,8 @@ import "./globals.css";
 import Link from "next/link";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
+import { GoogleOAuthProvider } from "@react-oauth/google";
+
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -31,15 +33,12 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
           <Navbar />
-        <nav className="flex justify-center space-x-8 bg-gray-800 py-4">
-          <Link href="/" className="text-white hover:font-bold text-xl">Home</Link>
-          <Link href="/about" className="text-white hover:font-bold text-xl">About</Link>
-          <Link href="/hotels" className="text-white hover:font-bold text-xl">Hotels</Link>
-          <Link href="/experiences" className="text-white hover:font-bold text-xl">Experiences</Link>
-          <Link href="/login" className="text-white hover:font-bold text-xl">Login</Link>
-        </nav>
+           <GoogleOAuthProvider clientId={process.env.NEXT_PUBLIC_GOOGLE_CLIENT_ID!}>
 
         {children}
+
+           </GoogleOAuthProvider>
+        
          <Footer />
       </body>
     </html>
