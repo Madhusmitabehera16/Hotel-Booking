@@ -40,7 +40,7 @@ export default function Navbar() {
   };
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 bg-white shadow">
+    <nav className="fixed top-0 left-0 right-0 z-50 ">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           
@@ -68,7 +68,7 @@ export default function Navbar() {
             {!user ? (
               <Link
                 href="/login"
-                className="px-6 py-2 bg-black text-white rounded-full font-bold hover:bg-gray-200 text-black"
+                className="px-6 py-2 bg-black text-white rounded-full font-bold hover:bg-gray-700 text-black"
               >
                 Login
               </Link>
