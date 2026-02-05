@@ -5,6 +5,7 @@ import Link from "next/link";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import { GoogleOAuthProvider } from "@react-oauth/google";
+import GoogleProvider from "./provider/GoogleProvider";
 
 
 const geistSans = Geist({
@@ -35,6 +36,8 @@ export default function RootLayout({
       
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
+           <GoogleProvider>
+
           <Navbar />
            <GoogleOAuthProvider clientId={process.env.NEXT_PUBLIC_GOOGLE_CLIENT_ID!}>
 
@@ -42,6 +45,7 @@ export default function RootLayout({
 
            </GoogleOAuthProvider>
         
+           </GoogleProvider>
          <Footer />
       </body>
     </html>
