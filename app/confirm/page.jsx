@@ -25,7 +25,7 @@ export default function ConfirmPage() {
   };
 
   return (
-    <div className="min-h-screen w-full bg-gradient-to-br from-green-50 via-blue-50 to-purple-50 flex items-center justify-center p-4">
+    <div className="min-h-screen w-full pt-24 bg-gradient-to-br from-green-50 via-blue-50 to-purple-50 flex items-center justify-center p-4">
       <div className="max-w-2xl w-full">
         {/* Success Icon */}
         <div className="flex justify-center mb-8">
@@ -79,7 +79,7 @@ export default function ConfirmPage() {
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   placeholder="Enter your email"
-                  className="flex-1 px-4 py-3 border-2 border-gray-300 rounded-xl focus:outline-none focus:border-blue-500 transition-colors"
+                  className="flex-1 px-4 py-3 text-black border-2 border-gray-300 rounded-xl focus:outline-none focus:border-blue-500 transition-colors"
                 />
                 <button
                   onClick={handleSendEmail}
@@ -143,12 +143,12 @@ export default function ConfirmPage() {
             >
               Back to Home
             </button>
-            <button
+            {/* <button
               onClick={() => router.push("/bookings")}
               className="border-2 border-gray-300 text-gray-700 px-8 py-3 rounded-xl font-semibold hover:bg-gray-50 transition-all transform hover:scale-105"
             >
               View My Bookings
-            </button>
+            </button> */}
           </div>
         </div>
 

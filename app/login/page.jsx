@@ -17,7 +17,7 @@ export default function HotelBookingAuth() {
   const router = useRouter();
 
   const [isLogin, setIsLogin] = useState(true);
-  const [userType, setUserType] = useState("guest"); // guest | owner
+  const [userType, setUserType] = useState("guest");
   const [showPassword, setShowPassword] = useState(false);
   const [loading, setLoading] = useState(false);
 
@@ -67,7 +67,13 @@ export default function HotelBookingAuth() {
 
       if (!res.ok) throw new Error(data.message || "Authentication failed");
 
+      // ✅ STORE AUTH DATA
       localStorage.setItem("token", data.token);
+      localStorage.setItem("user", JSON.stringify(data.user));
+
+      // 🔥 NOTIFY NAVBAR
+      window.dispatchEvent(new Event("auth-change"));
+
       router.push("/");
     } catch (err) {
       alert(err.message);
@@ -95,7 +101,13 @@ export default function HotelBookingAuth() {
 
       if (!res.ok) throw new Error(data.error || "Google login failed");
 
+      // ✅ STORE AUTH DATA
       localStorage.setItem("token", data.token);
+      localStorage.setItem("user", JSON.stringify(data.user));
+
+      // 🔥 NOTIFY NAVBAR
+      window.dispatchEvent(new Event("auth-change"));
+
       router.push("/");
     } catch (err) {
       console.error("Google login failed:", err);
@@ -202,7 +214,11 @@ export default function HotelBookingAuth() {
               onClick={() => setShowPassword(!showPassword)}
               className="absolute right-4 top-1/2 -translate-y-1/2"
             >
-              {showPassword ? <EyeOff className="text-black" /> : <Eye className="text-black" />}
+              {showPassword ? (
+                <EyeOff className="text-black" />
+              ) : (
+                <Eye className="text-black" />
+              )}
             </button>
           </div>
 

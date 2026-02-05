@@ -10,6 +10,8 @@ import {
   Star,
   ArrowRight,
 } from "lucide-react";
+import { Instagram, Twitter, Facebook } from "lucide-react";
+
 import Link from "next/link";
 
 export default function HotelHomepage() {
@@ -17,6 +19,9 @@ export default function HotelHomepage() {
   const [checkIn, setCheckIn] = useState("");
   const [checkOut, setCheckOut] = useState("");
   const [guests, setGuests] = useState("2");
+  const [loading, setLoading] = useState(false);
+const [hotels, setHotels] = useState([]);
+
   const router = useRouter();
  const handleSearchClick = () => {
     if (!location.trim()) return;
@@ -147,22 +152,43 @@ export default function HotelHomepage() {
         </h2>
 
         <p className="text-gray-600 max-w-lg mb-6">
-          From pristine beaches to cultural hotspots, we make exploring the
-          Philippines easier, safer, and more exciting with expert-crafted
-          itineraries and round-the-clock support.
+          LuxStay brings you closer to your perfect stay. Explore handpicked hotels, compare prices, check real-time availability, and book securely in just a few clicks. Whether it’s a weekend getaway or a long vacation, LuxStay makes every journey effortless and memorable.
         </p>
 
         {/* SOCIAL ICONS */}
         <div className="flex gap-4 text-gray-700">
-          <div className="w-9 h-9 rounded-full border flex items-center justify-center">
-            <span>📸</span>
-          </div>
-          <div className="w-9 h-9 rounded-full border flex items-center justify-center">
-            <span>🐦</span>
-          </div>
-          <div className="w-9 h-9 rounded-full border flex items-center justify-center">
-            <span>📘</span>
-          </div>
+          <div className="flex gap-4">
+  {/* Instagram */}
+  <a
+    href="https://instagram.com/yourpage"
+    target="_blank"
+    rel="noopener noreferrer"
+    className="w-9 h-9 rounded-full border flex items-center justify-center hover:bg-gray-100 transition"
+  >
+    <Instagram className="w-4 h-4 text-gray-700" />
+  </a>
+
+  {/* Twitter / X */}
+  <a
+    href="https://twitter.com/yourpage"
+    target="_blank"
+    rel="noopener noreferrer"
+    className="w-9 h-9 rounded-full border flex items-center justify-center hover:bg-gray-100 transition"
+  >
+    <Twitter className="w-4 h-4 text-gray-700" />
+  </a>
+
+  {/* Facebook */}
+  <a
+    href="https://facebook.com/yourpage"
+    target="_blank"
+    rel="noopener noreferrer"
+    className="w-9 h-9 rounded-full border flex items-center justify-center hover:bg-gray-100 transition"
+  >
+    <Facebook className="w-4 h-4 text-gray-700" />
+  </a>
+</div>
+
         </div>
 
         {/* STATS */}
@@ -171,7 +197,7 @@ export default function HotelHomepage() {
             <div className="w-12 h-12 mx-auto rounded-full bg-gray-800 text-white flex items-center justify-center mb-2">
               😊
             </div>
-            <p className="text-xl font-bold">12k</p>
+            <p className="text-xl text-black font-bold">12k</p>
             <p className="text-sm text-gray-600">
               Happy and Satisfied Travelers
             </p>
@@ -181,7 +207,7 @@ export default function HotelHomepage() {
             <div className="w-12 h-12 mx-auto rounded-full bg-gray-800 text-white flex items-center justify-center mb-2">
               🏆
             </div>
-            <p className="text-xl font-bold">10yrs</p>
+            <p className="text-xl text-black font-bold">10yrs</p>
             <p className="text-sm text-gray-600">
               Proven Travel Industry Experience
             </p>
@@ -191,9 +217,9 @@ export default function HotelHomepage() {
             <div className="w-12 h-12 mx-auto rounded-full bg-gray-800 text-white flex items-center justify-center mb-2">
               📍
             </div>
-            <p className="text-xl font-bold">50+</p>
+            <p className="text-xl text-black font-bold">50+</p>
             <p className="text-sm text-gray-600">
-              Philippine Destinations Covered
+              All India Destinations Covered
             </p>
           </div>
         </div>
@@ -208,8 +234,7 @@ export default function HotelHomepage() {
           <div>
             <h4 className="font-semibold mb-1">Local Expertise</h4>
             <p className="text-sm text-white/90">
-              Our Filipino travel experts curate unique experiences with insider
-              knowledge you won’t find in typical tours.
+             LuxStay is a smart hotel booking platform built for modern travelers
             </p>
           </div>
         </div>
@@ -219,10 +244,9 @@ export default function HotelHomepage() {
             🧾
           </div>
           <div>
-            <h4 className="font-semibold mb-1">All-in-One Booking</h4>
+            <h4 className="font-semibold mb-1">All in One Booking</h4>
             <p className="text-sm text-white/90">
-              Book everything in one place—easy flights, accommodations, tours,
-              and transfers for stress-free travel.
+              From budget stays to luxury resorts, LuxStay offers secure payments, real-time availability, and a seamless booking experience—all in one place.
             </p>
           </div>
         </div>

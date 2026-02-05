@@ -12,12 +12,19 @@ export default function Navbar() {
   const dropdownRef = useRef(null);
   const router = useRouter();
 
-  // 🔹 Load user from localStorage
+  // 🔹 Load user initially + listen for login/logout
   useEffect(() => {
-    const storedUser = localStorage.getItem("user");
-    if (storedUser) {
-      setUser(JSON.parse(storedUser));
-    }
+    const loadUser = () => {
+      const storedUser = localStorage.getItem("user");
+      setUser(storedUser ? JSON.parse(storedUser) : null);
+    };
+
+    loadUser();
+    window.addEventListener("auth-change", loadUser);
+
+    return () => {
+      window.removeEventListener("auth-change", loadUser);
+    };
   }, []);
 
   // 🔹 Close dropdown on outside click
@@ -27,30 +34,36 @@ export default function Navbar() {
         setDropdownOpen(false);
       }
     };
+
     document.addEventListener("mousedown", handleClickOutside);
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
 
-  // 🔹 Logout handler
+  // 🔹 Logout
   const handleLogout = () => {
     localStorage.removeItem("user");
-    setUser(null);
+    localStorage.removeItem("token");
+    window.dispatchEvent(new Event("auth-change"));
     setDropdownOpen(false);
     router.push("/login");
   };
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 ">
+    <nav className="fixed top-0 left-0 right-0 z-50 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
-          
-          {/* Logo */}
-          <div className="flex items-center space-x-2">
-            <img className="h-10 w-10 rounded-full" src="/logo.png" alt="logo" />
-            <span className="text-2xl font-bold text-gray-900">LuxStay</span>
-          </div>
 
-          {/* Desktop Navigation */}
+          {/* LOGO */}
+          <Link href="/" className="flex items-center space-x-2">
+            <img
+              src="/logo.png"
+              alt="LuxStay"
+              className="h-10 w-10 rounded-full"
+            />
+            <span className="text-2xl font-bold text-gray-900">LuxStay</span>
+          </Link>
+
+          {/* DESKTOP NAV */}
           <div className="hidden md:flex items-center space-x-8">
             <Link href="/" className="font-bold text-black hover:font-extrabold">Home</Link>
             <Link href="/search" className="font-bold text-black hover:font-extrabold">Hotels</Link>
@@ -58,17 +71,22 @@ export default function Navbar() {
             <Link href="/about" className="font-bold text-black hover:font-extrabold">About</Link>
           </div>
 
-          {/* Right Section */}
+          {/* RIGHT SECTION */}
           <div className="hidden md:flex items-center space-x-4 relative">
-            <button className="p-2 hover:bg-gray-100 rounded-full">
-              <Search className="w-5 h-5 text-black" />
-            </button>
 
-            {/* 🔹 AUTH SECTION */}
+            {/* SEARCH ICON — LINK, NOT BUTTON */}
+            <Link
+              href="/search"
+              className="p-2 hover:bg-gray-100 rounded-full inline-flex items-center justify-center"
+            >
+              <Search className="w-5 h-5 text-black" />
+            </Link>
+
+            {/* AUTH */}
             {!user ? (
               <Link
                 href="/login"
-                className="px-6 py-2 bg-black text-white rounded-full font-bold hover:bg-gray-700 text-black"
+                className="px-6 py-2 bg-black text-white rounded-full font-bold hover:bg-gray-800"
               >
                 Login
               </Link>
@@ -76,25 +94,24 @@ export default function Navbar() {
               <div className="relative" ref={dropdownRef}>
                 <button
                   onClick={() => setDropdownOpen(!dropdownOpen)}
-                  className="flex items-center gap-2 px-4 py-2 bg-gray-500 rounded-full font-semibold"
+                  className="flex items-center gap-2 px-4 py-2 bg-gray-100 rounded-full font-semibold text-gray-900"
                 >
                   {user.email}
                   <ChevronDown size={16} />
                 </button>
 
-                {/* Dropdown */}
                 {dropdownOpen && (
                   <div className="absolute right-0 mt-2 w-44 bg-white rounded-lg shadow-lg border">
                     <Link
                       href="/profile"
-                      className="block px-4 py-2 hover:bg-gray-100"
+                      className="block px-4 py-2 text-gray-900 hover:bg-gray-100"
                       onClick={() => setDropdownOpen(false)}
                     >
                       Profile
                     </Link>
                     <Link
                       href="/settings"
-                      className="block px-4 py-2 hover:bg-gray-100"
+                      className="block px-4 py-2 text-gray-900 hover:bg-gray-100"
                       onClick={() => setDropdownOpen(false)}
                     >
                       Settings
@@ -111,13 +128,14 @@ export default function Navbar() {
             )}
           </div>
 
-          {/* Mobile Menu Button */}
+          {/* MOBILE MENU BUTTON */}
           <button
             onClick={() => setIsMenuOpen(!isMenuOpen)}
             className="md:hidden p-2 rounded-lg hover:bg-gray-100"
           >
             {isMenuOpen ? <X /> : <Menu />}
           </button>
+
         </div>
       </div>
     </nav>
