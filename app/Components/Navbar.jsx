@@ -1,7 +1,8 @@
 "use client";
 
 import React, { useEffect, useState, useRef } from "react";
-import { Search, Menu, X, ChevronDown } from "lucide-react";
+import { Search, Menu, X, ChevronDown, MoreVertical } from "lucide-react";
+
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 
@@ -47,6 +48,12 @@ export default function Navbar() {
     setDropdownOpen(false);
     router.push("/login");
   };
+  useEffect(() => {
+  const closeMenu = () => setIsMenuOpen(false);
+  window.addEventListener("resize", closeMenu);
+  return () => window.removeEventListener("resize", closeMenu);
+}, []);
+
 
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 bg-white">
@@ -129,15 +136,104 @@ export default function Navbar() {
           </div>
 
           {/* MOBILE MENU BUTTON */}
-          <button
-            onClick={() => setIsMenuOpen(!isMenuOpen)}
-            className="md:hidden p-2 rounded-lg hover:bg-gray-100"
-          >
-            {isMenuOpen ? <X /> : <Menu />}
-          </button>
+         <button
+  onClick={() => setIsMenuOpen(!isMenuOpen)}
+  className="p-2 rounded-full hover:bg-gray-100"
+>
+  {isMenuOpen ? (
+    <X className="w-6 h-6 text-black" />
+  ) : (
+    <MoreVertical className="w-6 h-6 text-black" />
+  )}
+</button>
 
         </div>
       </div>
+      {/* MOBILE MENU */}
+{isMenuOpen && (
+  <div className="md:hidden fixed top-16 left-0 right-0 z-40 bg-white border-t shadow-lg">
+    <div className="px-4 py-4 space-y-4">
+
+      {/* NAV LINKS */}
+      <Link
+        href="/"
+        onClick={() => setIsMenuOpen(false)}
+        className="block font-bold text-black"
+      >
+        Home
+      </Link>
+
+      <Link
+        href="/search"
+        onClick={() => setIsMenuOpen(false)}
+        className="block font-bold text-black"
+      >
+        Hotels
+      </Link>
+
+      <Link
+        href="/experiences"
+        onClick={() => setIsMenuOpen(false)}
+        className="block font-bold text-black"
+      >
+        Experiences
+      </Link>
+
+      <Link
+        href="/about"
+        onClick={() => setIsMenuOpen(false)}
+        className="block font-bold text-black"
+      >
+        About
+      </Link>
+
+      {/* DIVIDER */}
+      <hr />
+
+      {/* AUTH SECTION */}
+      {!user ? (
+        <Link
+          href="/login"
+          onClick={() => setIsMenuOpen(false)}
+          className="block text-center px-6 py-2 bg-black text-white rounded-full font-bold"
+        >
+          Login
+        </Link>
+      ) : (
+        <div className="space-y-3">
+          <p className="text-sm text-gray-600">{user.email}</p>
+
+          <Link
+            href="/profile"
+            onClick={() => setIsMenuOpen(false)}
+            className="block px-4 py-2 rounded hover:bg-gray-100"
+          >
+            Profile
+          </Link>
+
+          <Link
+            href="/settings"
+            onClick={() => setIsMenuOpen(false)}
+            className="block px-4 py-2 rounded hover:bg-gray-100"
+          >
+            Settings
+          </Link>
+
+          <button
+            onClick={() => {
+              handleLogout();
+              setIsMenuOpen(false);
+            }}
+            className="w-full text-left px-4 py-2 text-red-600 hover:bg-red-100 rounded"
+          >
+            Logout
+          </button>
+        </div>
+      )}
+    </div>
+  </div>
+)}
+
     </nav>
   );
 }

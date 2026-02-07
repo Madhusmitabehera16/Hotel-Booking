@@ -18,21 +18,22 @@ export default function ConfirmPage() {
     }
 
     setIsSending(true);
-    // Simulate API call
     await new Promise((resolve) => setTimeout(resolve, 1500));
     setIsSending(false);
     setEmailSent(true);
   };
 
   return (
-    <div className="min-h-screen w-full pt-24 bg-gradient-to-br from-green-50 via-blue-50 to-purple-50 flex items-center justify-center p-4">
+    <div className="min-h-screen w-full pt-24 bg-gradient-to-br from-green-50 via-blue-50 to-purple-50 flex items-center justify-center px-4">
+
       <div className="max-w-2xl w-full">
-        {/* Success Icon */}
-        <div className="flex justify-center mb-8">
+
+        {/* SUCCESS ICON */}
+        <div className="flex justify-center mb-6 sm:mb-8">
           <div className="relative">
-            <div className="w-32 h-32 bg-green-500 rounded-full flex items-center justify-center shadow-2xl animate-bounce">
+            <div className="w-24 h-24 sm:w-32 sm:h-32 bg-green-500 rounded-full flex items-center justify-center shadow-2xl animate-bounce">
               <svg
-                className="w-20 h-20 text-white"
+                className="w-14 h-14 sm:w-20 sm:h-20 text-white"
                 fill="none"
                 stroke="currentColor"
                 viewBox="0 0 24 24"
@@ -45,34 +46,38 @@ export default function ConfirmPage() {
                 />
               </svg>
             </div>
-            <div className="absolute inset-0 w-32 h-32 bg-green-400 rounded-full animate-ping opacity-20"></div>
+            <div className="absolute inset-0 w-24 h-24 sm:w-32 sm:h-32 bg-green-400 rounded-full animate-ping opacity-20"></div>
           </div>
         </div>
 
-        {/* Main Content Card */}
-        <div className="bg-white rounded-3xl shadow-2xl p-8 md:p-12 text-center">
-          <h1 className="text-4xl md:text-5xl font-bold text-gray-800 mb-4">
+        {/* MAIN CARD */}
+        <div className="bg-white rounded-3xl shadow-2xl p-6 sm:p-8 md:p-12 text-center">
+
+          <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-800 mb-4">
             Booking Confirmed!
           </h1>
-          
-          <p className="text-xl text-gray-600 mb-8">
+
+          <p className="text-base sm:text-lg md:text-xl text-gray-600 mb-6 sm:mb-8">
             Your reservation has been successfully processed
           </p>
 
-          {/* Booking ID Display */}
-          <div className="bg-gradient-to-r from-blue-100 to-purple-100 rounded-2xl p-6 mb-8">
-            <p className="text-sm text-gray-600 mb-2">Booking Reference</p>
-            <p className="text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600">
+          {/* BOOKING ID */}
+          <div className="bg-gradient-to-r from-blue-100 to-purple-100 rounded-2xl p-4 sm:p-6 mb-6 sm:mb-8">
+            <p className="text-sm text-gray-600 mb-2">
+              Booking Reference
+            </p>
+            <p className="text-2xl sm:text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600 break-all">
               {bookingId || "N/A"}
             </p>
           </div>
 
-          {/* Email Section */}
+          {/* EMAIL SECTION */}
           {!emailSent ? (
-            <div className="mb-8">
+            <div className="mb-6 sm:mb-8">
               <p className="text-gray-700 mb-4 font-medium">
                 Get your confirmation details via email
               </p>
+
               <div className="flex flex-col sm:flex-row gap-3 max-w-md mx-auto">
                 <input
                   type="email"
@@ -81,10 +86,11 @@ export default function ConfirmPage() {
                   placeholder="Enter your email"
                   className="flex-1 px-4 py-3 text-black border-2 border-gray-300 rounded-xl focus:outline-none focus:border-blue-500 transition-colors"
                 />
+
                 <button
                   onClick={handleSendEmail}
                   disabled={isSending}
-                  className="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-8 py-3 rounded-xl font-semibold hover:from-blue-700 hover:to-purple-700 transition-all transform hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed shadow-lg"
+                  className="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-6 sm:px-8 py-3 rounded-xl font-semibold hover:from-blue-700 hover:to-purple-700 transition-all transform hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed shadow-lg"
                 >
                   {isSending ? (
                     <span className="flex items-center justify-center gap-2">
@@ -113,8 +119,8 @@ export default function ConfirmPage() {
               </div>
             </div>
           ) : (
-            <div className="mb-8 bg-green-50 border-2 border-green-200 rounded-xl p-6">
-              <div className="flex items-center justify-center gap-2 text-green-700">
+            <div className="mb-6 sm:mb-8 bg-green-50 border-2 border-green-200 rounded-xl p-4 sm:p-6">
+              <div className="flex flex-col sm:flex-row items-center justify-center gap-2 text-green-700">
                 <svg
                   className="w-6 h-6"
                   fill="none"
@@ -128,14 +134,14 @@ export default function ConfirmPage() {
                     d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
                   />
                 </svg>
-                <p className="font-semibold text-lg">
+                <p className="font-semibold text-base sm:text-lg text-center">
                   Confirmation sent to {email}
                 </p>
               </div>
             </div>
           )}
 
-          {/* Action Buttons */}
+          {/* ACTION BUTTONS */}
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <button
               onClick={() => router.push("/search")}
@@ -143,19 +149,15 @@ export default function ConfirmPage() {
             >
               Back to Home
             </button>
-            {/* <button
-              onClick={() => router.push("/bookings")}
-              className="border-2 border-gray-300 text-gray-700 px-8 py-3 rounded-xl font-semibold hover:bg-gray-50 transition-all transform hover:scale-105"
-            >
-              View My Bookings
-            </button> */}
           </div>
         </div>
 
-        {/* Footer Message */}
-        <p className="text-center text-gray-600 mt-8 text-sm">
-          We've sent a confirmation to your registered email address. Have a wonderful stay! ✨
+        {/* FOOTER MESSAGE */}
+        <p className="text-center text-gray-600 mt-6 sm:mt-8 text-sm px-4">
+          We've sent a confirmation to your registered email address.  
+          Have a wonderful stay! ✨
         </p>
+
       </div>
     </div>
   );

@@ -41,9 +41,10 @@ export default function HotelBookingAuth() {
     try {
       setLoading(true);
 
-      const endpoint = isLogin
-        ? "http://localhost:5000/api/auth/login"
-        : "http://localhost:5000/api/auth/register";
+     const endpoint = isLogin
+  ? "https://luxstay-backend-l1kg.onrender.com/api/auth/login"
+  : "https://luxstay-backend-l1kg.onrender.com/api/auth/register";
+
 
       const payload = isLogin
         ? {
@@ -88,7 +89,7 @@ export default function HotelBookingAuth() {
   ====================== */
   const handleGoogleSuccess = async (credentialResponse) => {
     try {
-      const res = await fetch("http://localhost:5000/api/auth/google", {
+      const res = await fetch("https://luxstay-backend-l1kg.onrender.com/api/auth/google", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
