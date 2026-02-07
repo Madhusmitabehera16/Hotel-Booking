@@ -74,7 +74,7 @@ export default function Navbar() {
           <div className="hidden md:flex items-center space-x-8">
             <Link href="/" className="font-bold text-black hover:font-extrabold">Home</Link>
             <Link href="/search" className="font-bold text-black hover:font-extrabold">Hotels</Link>
-            <Link href="/experiences" className="font-bold text-black hover:font-extrabold">Experiences</Link>
+            {/* <Link href="/experiences" className="font-bold text-black hover:font-extrabold">Experiences</Link> */}
             <Link href="/about" className="font-bold text-black hover:font-extrabold">About</Link>
           </div>
 
@@ -171,13 +171,13 @@ export default function Navbar() {
         Hotels
       </Link>
 
-      <Link
+      {/* <Link
         href="/experiences"
         onClick={() => setIsMenuOpen(false)}
         className="block font-bold text-black"
       >
         Experiences
-      </Link>
+      </Link> */}
 
       <Link
         href="/about"
