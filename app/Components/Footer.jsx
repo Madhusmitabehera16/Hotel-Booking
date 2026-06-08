@@ -68,7 +68,7 @@ export default function Footer() {
               <input
                 type="email"
                 placeholder="Your email"
-                className="flex-1 px-4 py-2 border border-gray-300 rounded-l-lg focus:outline-none focus:border-blue-500 text-sm"
+                className="flex-1 px-4 py-2 border text-black border-gray-300 rounded-l-lg focus:outline-none focus:border-blue-500 text-sm"
               />
               <button className="bg-black text-white px-4 py-2 rounded-r-lg hover:bg-gray-800 transition-colors">
                 <ArrowRight className="w-4 h-4" />

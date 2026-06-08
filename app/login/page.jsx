@@ -13,6 +13,8 @@ import {
 import { GoogleLogin } from "@react-oauth/google";
 import { useRouter } from "next/navigation";
 
+const AUTH_API = "/api/auth";
+
 export default function HotelBookingAuth() {
   const router = useRouter();
 
@@ -41,9 +43,9 @@ export default function HotelBookingAuth() {
     try {
       setLoading(true);
 
-     const endpoint = isLogin
-  ? "https://luxstay-backend-l1kg.onrender.com/api/auth/login"
-  : "https://luxstay-backend-l1kg.onrender.com/api/auth/register";
+      const endpoint = isLogin
+        ? `${AUTH_API}/login`
+        : `${AUTH_API}/register`;
 
 
       const payload = isLogin
@@ -66,7 +68,9 @@ export default function HotelBookingAuth() {
 
       const data = await res.json();
 
-      if (!res.ok) throw new Error(data.message || "Authentication failed");
+      if (!res.ok) {
+        throw new Error(data.message || data.error || "Authentication failed");
+      }
 
       // ✅ STORE AUTH DATA
       localStorage.setItem("token", data.token);
@@ -89,7 +93,7 @@ export default function HotelBookingAuth() {
   ====================== */
   const handleGoogleSuccess = async (credentialResponse) => {
     try {
-      const res = await fetch("https://luxstay-backend-l1kg.onrender.com/api/auth/google", {
+      const res = await fetch(`${AUTH_API}/google`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -100,7 +104,9 @@ export default function HotelBookingAuth() {
 
       const data = await res.json();
 
-      if (!res.ok) throw new Error(data.error || "Google login failed");
+      if (!res.ok) {
+        throw new Error(data.message || data.error || "Google login failed");
+      }
 
       // ✅ STORE AUTH DATA
       localStorage.setItem("token", data.token);
@@ -112,7 +118,7 @@ export default function HotelBookingAuth() {
       router.push("/");
     } catch (err) {
       console.error("Google login failed:", err);
-      alert("Google login failed");
+      alert(err.message || "Google login failed");
     }
   };
 
